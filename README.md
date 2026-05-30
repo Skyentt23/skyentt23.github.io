@@ -8,7 +8,3 @@ Version mise à jour : l’application est indiquée comme disponible sur Androi
 - `app-ads.txt` : fichier requis pour la validation AdMob.
 - `robots.txt` : autorise l’indexation.
 
-## Important
-
-Dans `index.html`, le bouton Google Play contient encore `href="#"`.
-Remplacez ce `#` par l’URL réelle de la fiche Google Play lorsque vous l’avez.
