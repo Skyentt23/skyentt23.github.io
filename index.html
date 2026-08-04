@@ -8,7 +8,7 @@
 
   <meta
     name="description"
-    content="Mon Herboriste est disponible sur Android : découvrez les plantes, les besoins bien-être, les recettes simples et construisez votre placard personnel, avec une approche calme et non médicale."
+    content="Mon Herboriste est disponible sur Android : catalogue de plantes, identification par photo, carte des établissements, rituels bien-être et placard personnel, avec une approche calme et non médicale."
   />
 
   <meta name="theme-color" content="#2f4a3a" />
@@ -20,7 +20,7 @@
   <meta property="og:title" content="Mon Herboriste — Votre guide doux autour des plantes" />
   <meta
     property="og:description"
-    content="Découvrez les plantes, explorez des besoins de bien-être et construisez votre placard, avec une approche calme et non médicale."
+    content="Catalogue de plantes, identification par photo, carte des établissements et rituels bien-être, avec une approche calme et non médicale."
   />
   <meta property="og:image" content="https://skyentt23.github.io/logo-detoure.png" />
   <meta name="twitter:card" content="summary" />
@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap"
     rel="stylesheet"
   />
 
@@ -56,6 +56,7 @@
       --radius-md: 18px;
       --serif: "Fraunces", Georgia, "Times New Roman", serif;
       --sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --display: "Poppins", "Manrope", ui-sans-serif, system-ui, sans-serif;
       font-family: var(--sans);
     }
 
@@ -95,32 +96,36 @@
       left: 0;
     }
 
-    /* Decorative botanical line art, echoing the logo */
+    /* Decorative botanical illustrations, cropped from the app logo artwork */
     .botanical {
       position: fixed;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.5;
+      opacity: 0.85;
+    }
+
+    .botanical img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .botanical.top-right {
-      width: 420px;
-      height: 420px;
-      top: -110px;
-      right: -120px;
+      width: 240px;
+      height: 260px;
+      top: -18px;
+      right: -30px;
+      transform: rotate(8deg);
     }
 
     .botanical.bottom-left {
-      width: 460px;
-      height: 460px;
-      bottom: -140px;
-      left: -150px;
-      opacity: 0.4;
-    }
-
-    .botanical svg {
-      width: 100%;
-      height: 100%;
+      width: 190px;
+      height: 300px;
+      bottom: -30px;
+      left: -30px;
+      transform: rotate(6deg) scaleX(-1);
+      opacity: 0.75;
     }
 
     img {
@@ -306,17 +311,16 @@
 
     h1 {
       margin: 0;
-      max-width: 640px;
+      max-width: 620px;
       color: var(--forest-deep);
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: clamp(2.4rem, 5.4vw, 4.2rem);
-      line-height: 1.04;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(2.3rem, 5vw, 3.9rem);
+      line-height: 1.05;
       letter-spacing: -0.02em;
     }
 
-    h1 em {
-      font-style: italic;
+    h1 .highlight {
       color: var(--forest-2);
     }
 
@@ -417,6 +421,31 @@
       border-radius: 40px;
       background: linear-gradient(160deg, #1c2b22, #0f1a14);
       box-shadow: var(--shadow-lg);
+    }
+
+    .phone-card::before {
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: 92px;
+      width: 3px;
+      height: 46px;
+      border-radius: 2px 0 0 2px;
+      background: #0a120e;
+      box-shadow: 0 64px 0 0 #0a120e, 0 116px 0 0 #0a120e;
+    }
+
+    .phone-card::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 16px;
+      width: 84px;
+      height: 22px;
+      border-radius: 999px;
+      background: #0a120e;
+      transform: translateX(-50%);
+      z-index: 3;
     }
 
     .phone-card.back {
@@ -618,11 +647,11 @@
     .section h2 {
       margin: 0;
       color: var(--forest-deep);
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: clamp(1.7rem, 3.4vw, 2.4rem);
-      letter-spacing: -0.02em;
-      line-height: 1.15;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      letter-spacing: -0.01em;
+      line-height: 1.18;
     }
 
     .section > p.intro {
@@ -722,86 +751,77 @@
       font-size: 1.1rem;
     }
 
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .preview-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
     }
 
-    .chip {
-      font-size: 0.78rem;
-      font-weight: 650;
-      padding: 8px 13px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid var(--line);
-      color: var(--ink);
-    }
-
-    .plant-card {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid var(--line);
+    /* Carte des établissements mockup */
+    .map-mock {
+      position: relative;
+      height: 140px;
       border-radius: 16px;
-      padding: 12px;
+      background: linear-gradient(135deg, #edf0e1, #d9e4d0);
+      border: 1px solid var(--line);
+      overflow: hidden;
     }
 
-    .plant-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--sage), var(--forest-2));
+    .map-pin {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 800;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Identification photo mockup */
+    .identify-photo {
+      height: 104px;
+      border-radius: 16px;
+      background: linear-gradient(160deg, #1c2b22, #0f1a14);
+      display: flex;
+      align-items: flex-end;
+      padding: 10px 12px;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.72rem;
+      font-weight: 650;
+    }
+
+    .identify-photo svg {
+      width: 15px;
+      height: 15px;
+      stroke: rgba(255, 255, 255, 0.85);
       flex-shrink: 0;
     }
 
-    .plant-meta strong {
-      display: block;
-      font-size: 0.88rem;
-      color: var(--ink);
+    /* Rituel bien-être mockup */
+    .ritual-image {
+      height: 100px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #e8c26c, #c98f6b 45%, #6f8f6a 100%);
     }
 
-    .plant-meta span {
-      display: block;
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .tag-list {
+    .ritual-meta {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 2px;
-    }
-
-    .tag-list span {
-      font-size: 0.68rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(47, 74, 58, 0.08);
-      color: var(--forest);
-      font-weight: 650;
-    }
-
-    .cabinet-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
       gap: 8px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
     }
 
-    .cabinet-item {
-      aspect-ratio: 1;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-    }
-
-    .cabinet-item svg {
-      width: 18px;
-      height: 18px;
+    .ritual-meta svg {
+      width: 15px;
+      height: 15px;
       stroke: var(--forest-2);
     }
 
@@ -1070,19 +1090,11 @@
   <a class="skip-link" href="#main">Aller au contenu</a>
 
   <div class="botanical top-right" aria-hidden="true">
-    <svg viewBox="0 0 400 400" fill="none">
-      <path d="M370 40C300 10 220 40 190 110C160 180 190 250 260 270" stroke="#2f4a3a" stroke-width="2" opacity="0.35" />
-      <path d="M250 60C230 100 235 150 270 185" stroke="#4f7a5e" stroke-width="2" opacity="0.3" />
-      <path d="M300 30C280 70 285 120 320 155" stroke="#8ca57c" stroke-width="2" opacity="0.3" />
-    </svg>
+    <img src="./assets/deco-lavender.png" alt="" />
   </div>
 
   <div class="botanical bottom-left" aria-hidden="true">
-    <svg viewBox="0 0 400 400" fill="none">
-      <path d="M30 370C110 390 180 350 200 280C220 210 190 150 130 130" stroke="#2f4a3a" stroke-width="2" opacity="0.3" />
-      <path d="M150 350C160 300 145 250 100 220" stroke="#4f7a5e" stroke-width="2" opacity="0.28" />
-      <path d="M90 380C100 330 90 280 55 250" stroke="#8ca57c" stroke-width="2" opacity="0.28" />
-    </svg>
+    <img src="./assets/deco-mustard.png" alt="" />
   </div>
 
   <main class="page" id="main">
@@ -1152,7 +1164,7 @@
       <div>
         <p class="eyebrow">Application Android</p>
 
-        <h1>Votre guide <em>doux</em> autour des plantes.</h1>
+        <h1>Votre guide <span class="highlight">doux</span> autour des plantes.</h1>
 
         <p class="lead">
           Mon Herboriste est disponible sur Android. L'application vous aide à découvrir les plantes,
@@ -1283,6 +1295,36 @@
 
         <article class="feature">
           <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.6-2.4A1 1 0 0 1 9.4 5h5.2a1 1 0 0 1 .8.6L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+          </div>
+          <h3>Identification par photo</h3>
+          <p>
+            Prenez une plante en photo pour obtenir des pistes d'identification et accéder à sa fiche.
+          </p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.2 7-12.5A7 7 0 0 0 5 8.5C5 13.8 12 21 12 21Z"/><circle cx="12" cy="8.5" r="2.6"/></svg>
+          </div>
+          <h3>Carte des établissements</h3>
+          <p>
+            Repérez sur une carte les herboristeries, pharmacies et points de vente autour de vous.
+          </p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/><path d="M9 14.5c1-1.5 2-1.5 3 0s2 1.5 3 0"/></svg>
+          </div>
+          <h3>Rituels bien-être</h3>
+          <p>
+            Des parcours doux sur plusieurs jours pour intégrer les plantes à votre routine, à votre rythme.
+          </p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16l-1.5 9.5a2 2 0 0 1-2 1.5H7.5a2 2 0 0 1-2-1.5L4 10Z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>
           </div>
           <h3>Placard personnel</h3>
@@ -1298,51 +1340,39 @@
         <p class="kicker">Aperçu</p>
         <h2>Ce que vous retrouvez dans l'app.</h2>
         <p class="intro">
-          Trois écrans, trois façons d'entrer dans l'univers des plantes : par besoin, par fiche
-          détaillée, ou depuis votre propre placard.
+          Trois façons de vivre l'application : une carte des professionnels autour de vous, une
+          identification par photo, et des rituels bien-être à adopter à votre rythme.
         </p>
       </div>
 
       <div class="preview-grid">
         <div class="preview-card">
-          <span class="preview-tag">Par besoin</span>
-          <h4>Un besoin, des pistes</h4>
-          <div class="chip-row">
-            <span class="chip">Sommeil</span>
-            <span class="chip">Stress</span>
-            <span class="chip">Digestion</span>
-            <span class="chip">Gorge</span>
-            <span class="chip">Vitalité</span>
+          <span class="preview-tag">Carte des établissements</span>
+          <div class="map-mock">
+            <span class="map-pin" style="left:26%;top:22%;background:var(--forest-2);">H</span>
+            <span class="map-pin" style="left:44%;top:38%;background:var(--forest-2);">H</span>
+            <span class="map-pin" style="left:58%;top:58%;background:var(--mustard);">R</span>
+            <span class="map-pin" style="left:34%;top:72%;background:#3d7a86;">P</span>
           </div>
+          <h4>Trouvez des professionnels autour de vous</h4>
         </div>
 
         <div class="preview-card">
-          <span class="preview-tag">Fiche plante</span>
-          <h4>Camomille</h4>
-          <div class="plant-card">
-            <div class="plant-avatar"></div>
-            <div class="plant-meta">
-              <strong>Camomille</strong>
-              <span>Infusion · Fleurs séchées</span>
-            </div>
+          <span class="preview-tag">Identification</span>
+          <div class="identify-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.6-2.4A1 1 0 0 1 9.4 5h5.2a1 1 0 0 1 .8.6L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+            Photo envoyée pour identification
           </div>
-          <div class="tag-list">
-            <span>Usages</span>
-            <span>Préparation</span>
-            <span>Précautions</span>
-          </div>
+          <h4>Identifiez les plantes près de chez vous</h4>
         </div>
 
         <div class="preview-card">
-          <span class="preview-tag">Mon placard</span>
-          <h4>Vos favoris</h4>
-          <div class="cabinet-grid">
-            <div class="cabinet-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 21c-4-2-6-6-6-10a6 6 0 0 1 12 0c0 4-2 8-6 10Z" stroke-linejoin="round"/><path d="M12 21V9"/></svg></div>
-            <div class="cabinet-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 21c-4-2-6-6-6-10a6 6 0 0 1 12 0c0 4-2 8-6 10Z" stroke-linejoin="round"/><path d="M12 21V9"/></svg></div>
-            <div class="cabinet-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="7"/></svg></div>
-            <div class="cabinet-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 21c-4-2-6-6-6-10a6 6 0 0 1 12 0c0 4-2 8-6 10Z" stroke-linejoin="round"/><path d="M12 21V9"/></svg></div>
-            <div class="cabinet-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 21c-4-2-6-6-6-10a6 6 0 0 1 12 0c0 4-2 8-6 10Z" stroke-linejoin="round"/><path d="M12 21V9"/></svg></div>
-            <div class="cabinet-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="7"/></svg></div>
+          <span class="preview-tag">Rituel bien-être</span>
+          <div class="ritual-image"></div>
+          <h4>Rituel d'été</h4>
+          <div class="ritual-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            21 jours · Routine douce
           </div>
         </div>
       </div>
@@ -1403,7 +1433,7 @@
         </div>
 
         <div class="contact-card">
-          <h3 style="margin:0 0 10px;font-family:var(--serif);font-weight:600;font-size:1.3rem;">Mon Herboriste sur Google Play</h3>
+          <h3 style="margin:0 0 10px;font-family:var(--display);font-weight:800;font-size:1.2rem;">Mon Herboriste sur Google Play</h3>
           <p>Retrouvez la fiche complète, les informations de contact et les avis de l'application.</p>
           <a
             class="button primary"
